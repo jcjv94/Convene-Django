@@ -1,20 +1,26 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Index</title>
+    <meta charset="utf-8">
+
+    <title>My fake blog!</title>
+
 </head>
 
 <body>
-    {% extends 'base.html' %}
-    {% block content %}
+    <h1>My fake blog!</h1>
+    {% if user.is_authenticated %}
+    <p>Logged as {{ user.username }}</p>
+    <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+    <a href="{% url 'social:begin' 'google-oauth2' %}">
+        Login
+    </a>
+    {% endif %}
+    </div>
 
-    <h1>Home</h1>
-
-    {% endblock %}
+    </div>
 </body>
 
 </html>
