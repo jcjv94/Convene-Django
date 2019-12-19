@@ -146,7 +146,7 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
 #     'https://www.googleapis.com/auth/userinfo.email',
 #     'https://www.googleapis.com/auth/userinfo.profile'
 # ]
-SOCIAL_AUTH_GOOGLE_OAUTH2_USE_UNIQUE_USER_ID = True
+# SOCIAL_AUTH_GOOGLE_OAUTH2_USE_UNIQUE_USER_ID = True
 
 LOGIN_URL = '/auth/login/google-oauth2/'
 
