@@ -21,6 +21,7 @@ def landing(request):
 
 def add_event(request):
     form = PostForm(request.POST)
+    print(form)
     if form.is_valid():
         new_event = form.save(commit=False)
         new_event.save()
