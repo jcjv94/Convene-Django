@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.contrib.postgres.fields import ArrayField
 
 # Create your models here.
@@ -17,7 +18,7 @@ class Event(models.Model):
     infolink = models.CharField(max_length=1000)
 
     def get_absolute_url(self):
-        return reverse('events_detail', kwargs={'pk': self.id})
+        return reverse('events_detail', kwargs={'event_id': self.id})
     
 
 
