@@ -4,11 +4,11 @@
 
 
 <h1>Add Event</h1>
-    <form action="" method="POST" class="post-form">
-        {% csrf_token %}
+<form action="" method="POST" class="post-form">
+    {% csrf_token %}
+    <table>
         {{ form.as_table }}
-        <button type="submit" class="save btn btn-default">Save</button>
-    </form>
+    </table>
+    <button type="submit" class="save btn btn-default">Save</button>
+</form>
 {% endblock %}
-
-  

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import PostForm
 from .models import Event
 
@@ -10,26 +10,32 @@ from .models import Event
 
 class EventCreate(CreateView):
     model = Event
-    fields = ['title', 'date', 'time', 'location', 'description', 'attendees', 'infolink']
+    fields = ['title', 'date', 'time', 'location',
+              'description', 'attendees', 'infolink']
 
     def form_valid(self, form):
-        form.instance.user = self.request.user
+        # form.instance.user = self.request.user
         return super().form_valid(form)
-     
-def landing(request):
-    return render(request, 'index.html', {'arr' : ['Outdoors', 'Music', 'Food','Tech','Education']})
 
-def add_event(request):
-    form = PostForm(request.POST)
-    print(form)
-    if form.is_valid():
-        new_event = form.save(commit=False)
-        new_event.save()
-    return render(request, 'add_event.html', {'form': form})
+
+
+def events_detail(request, event_id):
+    event = Event.objects.get(id=event_id)
+    # Instantiate FeedingForm to be rendered in the template
+    post_form = PostForm()
+    return render(request, 'events/detail.html', {
+        # Pass the cat and feeding_form as context
+        'event': event, 'post_form': post_form,
+    })
+
+def landing(request):
+    return render(request, 'index.html', {'arr': ['Outdoors', 'Music', 'Food', 'Tech', 'Education']})
+
+
 
 def user(request):
     return render(request, 'user/profile.html')
 
+
 def events(request):
     return render(request, 'events/index.html')
-
