@@ -14,7 +14,7 @@ from django.contrib.auth.forms import UserCreationForm
 class EventCreate(CreateView):
     model = Event
     fields = ['title', 'date', 'time', 'location',
-              'description', 'attendees', 'infolink']
+              'description', 'attendees', 'infolink', 'category']
 
     def form_valid(self, form):
         # form.instance.user = self.request.user
