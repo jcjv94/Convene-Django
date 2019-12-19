@@ -12,3 +12,6 @@ def auth(request):
 
 def user(request):
     return render(request, 'user/profile.html')
+
+def events(request):
+    return render(request, 'events/index.html')
