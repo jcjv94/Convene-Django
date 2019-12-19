@@ -12,10 +12,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 
-<body>
+<body style="height: 100%; position: relative;">
     <header class="navbar-fixed">
         <nav>
-            <div class="nav-wrapper">
+            <div class="nav-wrapper" style="background-color: deepskyblue;">
                 <ul>
                     <li><a href="/" class="left brand-logo">&nbsp;&nbsp;Convene</a></li>
                 </ul>
@@ -28,20 +28,25 @@
                     <li><a href="{% url 'logout' %}">Logout</a></li>
                     {% else %}
                     <li><a href="{% url 'social:begin' 'google-oauth2' %}">
-                        Login
-                    </a>
+                            Login
+                        </a>
                     </li>
                     {% endif %}
                 </ul>
             </div>
         </nav>
     </header>
-    <main class="container">
+    <main class="container" style=" min-height: 94vh;
+    overflow: hidden;
+    display: block;
+    
+    padding-bottom: 100px;">
         {% block content %}
         {% endblock %}
     </main>
-    <footer class="page-footer" style="
-    padding-bottom: 26px;
+    <footer class="page-footer" style=" position: absolute;
+    padding-bottom: 26px; bottom: 0;width: 100%; background-color: rgba(0,0,0,.6
+    );
 ">
         <div class="right">All Rights Reserved, &copy; 2019 Convene &nbsp;</div>
     </footer>

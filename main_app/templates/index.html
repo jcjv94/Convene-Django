@@ -1,14 +1,33 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<div id='video-container' style="position:absolute; top: 0; right: 0; bottom: 0; left: 0; width: 100vw; z-index: -10">
+  <video src='https://d2pxo8g26zv991.cloudfront.net/wp-content/uploads/2014/10/HomeVideo_v04_1.mp4' autoplay muted loop
+    style="margin: 0; min-height: 100vh; min-width: 100vw; position: absolute; top: 0;"></video>
+  <div class="contents">
+    <h4>Categories</h4>
+    <p>Please Select A Category</p>
+  </div>
+</div>
 
-<h4>Categories</h4>
-<p>Please Select A Category</p>
-<div>
-{% for category in arr %}
-<div>
-  <a href="">{{ category }}</a>
+<div class="col-third" style="margin-top: 20%;">
+  <div style="z-index: 100; display: grid; justify-content: center; text-align: center;">
+    {% for category in arr %}
+    <a href="">
+      <div style="
+    width: 256px;
+    height: 150px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(255,255,255, 0.8);
+">
+        {{ category }}
+        </divstyle=" width: 256px; height: 150px; margin: 0 auto; padding: 20px; border-radius: 10px; background-color:
+          rgba(255,255,255, 0.8); ">
+    </a>
+
+  {% endfor %}
 </div>
-{% endfor %}
 </div>
-{% endblock %} 
+{% endblock %}
