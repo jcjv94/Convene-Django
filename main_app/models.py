@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.contrib.postgres.fields import ArrayField
 from django.contrib.auth.models import User
 
@@ -17,6 +18,10 @@ class Event(models.Model):
     attendees = ArrayField(models.CharField(max_length=250))
     infolink = models.CharField(max_length=1000)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def get_absolute_url(self):
+        return reverse('events_detail', kwargs={'event_id': self.id})
+
     
 
 

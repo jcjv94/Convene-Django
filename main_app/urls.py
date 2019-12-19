@@ -12,7 +12,8 @@ def logout_view(request):
 
 urlpatterns = [
     path('', views.landing, name='landing'),
-    path('add_event/', views.add_event, name='add_event'),
+    path('events/<int:event_id>/', views.events_detail, name='events_detail'),
+    path('events/create/', views.EventCreate.as_view(), name='events_create'),
     path('user/', views.user, name='user'),
     path('events/', views.events, name='events'),
     path('', include('social_django.urls', namespace='social')),
