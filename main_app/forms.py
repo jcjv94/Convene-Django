@@ -6,4 +6,4 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Event
-        fields = ['title']
+        fields = ['title', 'date', 'time', 'location', 'description', 'attendees', 'infolink']

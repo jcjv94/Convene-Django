@@ -20,7 +20,10 @@ def landing(request):
     return render(request, 'index.html', {'arr' : ['Outdoors', 'Music', 'Food','Tech','Education']})
 
 def add_event(request):
-    form = PostForm()
+    form = PostForm(request.POST)
+    if form.is_valid():
+        new_event = form.save(commit=False)
+        new_event.save()
     return render(request, 'add_event.html', {'form': form})
 
 def user(request):
