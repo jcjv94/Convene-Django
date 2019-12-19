@@ -21,9 +21,19 @@
                 </ul>
                 <ul class="right">
                     <li><a href="{% url 'landing'%}">Home</a></li>
-                    <li><a href="{% url 'auth'%}">Login</a></li>
+                    <li><a href="{% url 'add_event'%}">Add Event</a></li>
+                    <li><a href="{% url 'events'%}">View Events</a></li>
+                    <li><a href="{% url 'user'%}">Profile</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                    {% else %}
+                    <li><a href="{% url 'social:begin' 'google-oauth2' %}">
+                        Login
+                    </a>
+                    </li>
+                    {% endif %}
                 </ul>
-            </div>v
+            </div>
         </nav>
     </header>
     <main class="container">

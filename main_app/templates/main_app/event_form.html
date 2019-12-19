@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content%}
+
+<h1>Add Event</h1>
+
+<form action='add-event/' method='post'>
+ 
+{%csrf_token%}
+
+<table>
+    {{form.as_table}}
+</table>
+<input type="submit" value="Add Event"/>
+</form>
+
+{% endblock %}

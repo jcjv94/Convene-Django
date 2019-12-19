@@ -1,14 +1,34 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView
 from django.http import HttpResponse
 from django.shortcuts import render
+from .forms import PostForm
+from .models import Event
+
 # Create your views here.
 
 
-def landing(request):
+class EventCreate(CreateView):
+    model = Event
+    fields = ['title', 'date', 'time', 'location', 'description', 'attendees', 'infolink']
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
      
+def landing(request):
+    return render(request, 'index.html', {'arr' : ['Outdoors', 'Music', 'Food','Tech','Education']})
 
-    return render(request, 'index.html')
+def add_event(request):
+    form = PostForm(request.POST)
+    if form.is_valid():
+        new_event = form.save(commit=False)
+        new_event.save()
+    return render(request, 'add_event.html', {'form': form})
 
-def auth(request):
-    return render(request, 'auth.html')
+def user(request):
+    return render(request, 'user/profile.html')
+
+def events(request):
+    return render(request, 'events/index.html')
 

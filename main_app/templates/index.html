@@ -1,26 +1,14 @@
-<!doctype html>
-<html lang="en">
+{% extends 'base.html' %}
+{% block content %}
 
-<head>
-    <meta charset="utf-8">
 
-    <title>My fake blog!</title>
-
-</head>
-
-<body>
-    <h1>My fake blog!</h1>
-    {% if user.is_authenticated %}
-    <p>Logged as {{ user.username }}</p>
-    <a href="{% url 'logout' %}">Logout</a>
-    {% else %}
-    <a href="{% url 'social:begin' 'google-oauth2' %}">
-        Login
-    </a>
-    {% endif %}
-    </div>
-
-    </div>
-</body>
-
-</html>
+<h4>Categories</h4>
+<p>Please Select A Category</p>
+<div>
+{% for category in arr %}
+<div>
+  <a href="">{{ category }}</a>
+</div>
+{% endfor %}
+</div>
+{% endblock %} 
