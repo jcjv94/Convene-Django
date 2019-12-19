@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .forms import PostForm
@@ -20,18 +21,25 @@ class EventCreate(CreateView):
         return super().form_valid(form)
 
 
+def events_index(request):
+    #   events = Event.objects.filter()
+    #   events = request.user.event_set.all()
+    events = Event.objects.all()
+    return render(request, 'events/index.html', {'events': events})
+
+
 def events_detail(request, event_id):
     event = Event.objects.get(id=event_id)
     # Instantiate FeedingForm to be rendered in the template
     post_form = PostForm()
     return render(request, 'events/detail.html', {
         # Pass the cat and feeding_form as context
-        'event': event, 'post_form': post_form,
+        'event': event
     })
+
 
 def landing(request):
     return render(request, 'index.html', {'arr': ['Outdoors', 'Entertainment', 'Food', 'Tech', 'Education', 'Health']})
-
 
 
 def user(request):
@@ -42,10 +50,9 @@ def events(request):
     return render(request, 'events/index.html')
 
 
-
 def signup(request):
     error_message = ''
-    if request.method =='POST':
+    if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
