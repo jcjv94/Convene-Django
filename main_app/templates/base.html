@@ -21,16 +21,19 @@
                 </ul>
                 <ul class="right">
                     <li><a href="{% url 'landing'%}">Home</a></li>
-                    <li><a href="{% url 'add_event'%}">Add Event</a></li>
                     <li><a href="{% url 'events'%}">View Events</a></li>
-                    <li><a href="{% url 'user'%}">Profile</a></li>
                     {% if user.is_authenticated %}
-                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                    <li><a href="{% url 'add_event'%}">Add Event</a></li>
+                    <li><a href="{% url 'user'%}">Profile</a></li>
+                    <li><a href="{% url 'logout' %}">Logout w/ google</a></li>
+                    <li> <a href="{% url 'logout' %}"> logout w/ django</a> </li>
                     {% else %}
                     <li><a href="{% url 'social:begin' 'google-oauth2' %}">
-                            Login
+                            Login w/ google
                         </a>
                     </li>
+                    <li> <a href="{% url 'signup' %}"> Sign Up</a> </li>
+                    <li> <a href="{% url 'login' %}"> login w/ django</a> </li>
                     {% endif %}
                 </ul>
             </div>
