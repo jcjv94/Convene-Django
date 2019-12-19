@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<h4>Categories</h4>
+<p>Please Select A Category</p>
+<div>
+{% for category in arr %}
+<div>
+  <a href="">{{ category }}</a>
+</div>
+{% endfor %}
+</div>
+{% endblock %} 
