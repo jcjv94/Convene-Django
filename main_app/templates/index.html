@@ -6,22 +6,34 @@
     style="margin: 0; min-height: 100vh; min-width: 100vw; position: absolute; top: 0;"></video>
   <div class="contents">
     <h4>Categories</h4>
-    <p>Please Select A Category</p>
   </div>
 </div>
+
+<!-- <div class="continer row">
+  <div class="col s12">Please Select A Category</div>
+  <div class="col s4"> <a href="">Outdoors</a></div>
+  <div class="col s4"> <a href="">Entertainment</a></div>
+  <div class="col s4"> <a href="">Food</a></div>
+  <div class="col s4"> <a href="">Technology</a></div>
+  <div class="col s4"> <a href=""> Education </a></div>
+  <div class="col s4"> <a href=""> Health </a></div>
+
+</div> -->
 
 <div class="col-third" style="margin-top: 20%;">
   <div style="z-index: 100; display: grid; justify-content: center; text-align: center;">
     {% for category in arr %}
     <a href="">
-      <div style="
+      <div 
+      style="
     width: 256px;
     height: 150px;
     margin: 0 auto;
     padding: 20px;
     border-radius: 10px;
     background-color: rgba(255,255,255, 0.8);
-">
+"
+>
         {{ category }}
         </divstyle=" width: 256px; height: 150px; margin: 0 auto; padding: 20px; border-radius: 10px; background-color:
           rgba(255,255,255, 0.8); ">

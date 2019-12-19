@@ -30,7 +30,7 @@ def events_detail(request, event_id):
     })
 
 def landing(request):
-    return render(request, 'index.html', {'arr': ['Outdoors', 'Music', 'Food', 'Tech', 'Education']})
+    return render(request, 'index.html', {'arr': ['Outdoors', 'Entertainment', 'Food', 'Tech', 'Education', 'Health']})
 
 
 
@@ -50,7 +50,7 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('index')
+            return redirect('/')
         else:
             error_message = 'Invalid Sign up - Try again'
     form = UserCreationForm()
