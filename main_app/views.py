@@ -16,7 +16,7 @@ import boto3
 class EventCreate(CreateView):
     model = Event
     fields = ['title', 'date', 'time', 'location',
-              'description', 'attendees', 'infolink', 'category']
+            'attendees', 'infolink', 'category', 'description']
 
     def form_valid(self, form):
         # form.instance.user = self.request.user
