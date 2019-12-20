@@ -63,3 +63,12 @@ def signup(request):
     form = UserCreationForm()
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
+
+
+class EventUpdate(UpdateView):
+  model = Event
+  fields = ['title', 'date', 'time', 'location', 'description', 'attendees', 'infolink', 'category']
+
+class EventDelete(DeleteView):
+  model = Event
+  success_url = '/events/'

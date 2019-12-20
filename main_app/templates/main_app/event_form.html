@@ -2,7 +2,11 @@
 
 {% block content%}
 
+{% if object %}
+<h1>Edit <span class="teal-text">{{object.title}}</span></h1>
+{% else %}
 <h1>Add Event</h1>
+{% endif %}
 
 <form action='' method='post'>
 
@@ -11,7 +15,7 @@
     <table>
         {{form.as_table}}
     </table>
-    <input type="submit" value="Add Event" />
+    <input type="submit" value="Submit" />
 </form>
 
 <script>

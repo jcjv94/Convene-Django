@@ -24,6 +24,8 @@
                     <p>Attendees: {{ event.attendees }}</p>
                     <p>InfoLink: {{ event.info }}</p>
                     <div class="card-action">
+                        <a href="{% url 'events_update' event.id %}">Edit</a>
+                        <a href="{% url 'events_delete' event.id %}">Delete</a>
                     </div>
                     {% endblock %}
 </body>
