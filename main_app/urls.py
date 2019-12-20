@@ -22,4 +22,6 @@ urlpatterns = [
     path('', include('social_django.urls', namespace='social')),
     path('logout/', logout_view, name='logout'),
     path('accounts/signup', views.signup, name='signup'),
+    path('events/<int:event_id>/add_photo/', views.add_photo, name='add_photo'),
+    path('events/<int:event_id>/upload_photo/', views.upload_photo, name='upload_photo'),
 ]

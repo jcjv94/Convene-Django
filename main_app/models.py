@@ -18,6 +18,9 @@ CATEGORIES = (
     ('health', 'Health'),
 )
 
+
+
+
 class Event(models.Model):
     title = models.CharField(max_length=250)
     date = models.DateField('event date')
@@ -26,6 +29,7 @@ class Event(models.Model):
     description = models.TextField(max_length=2000)
     attendees = ArrayField(models.CharField(max_length=250))
     infolink = models.CharField(max_length=1000)
+
     category = models.CharField(
         max_length=100,
         choices=CATEGORIES,
@@ -33,10 +37,16 @@ class Event(models.Model):
     )
     # user = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    def get_absolute_url(self):
-        return reverse('events_detail', kwargs={'event_id': self.id})
 
-    
+    def get_absolute_url(self):
+        return reverse('upload_photo', kwargs={'event_id': self.id})
+
+class Photo(models.Model):
+    url = models.CharField(max_length=200)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Photo for event_id: {self.event_id} @{self.url}"
 
 
 # class User(models.Model):
