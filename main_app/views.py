@@ -29,6 +29,9 @@ def events_index(request):
     events = Event.objects.all()
     return render(request, 'events/index.html', {'events': events})
 
+def category_index(request, event_category):
+    events = Event.objects.filter(category=event_category)
+    return render(request, 'events/index.html', {'events': events, 'category': event_category})
 
 def events_detail(request, event_id):
     event = Event.objects.get(id=event_id)
