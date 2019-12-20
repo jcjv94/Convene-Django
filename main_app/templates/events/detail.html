@@ -16,6 +16,11 @@
         <div class="col s6">
             <div class="card">
                 <div class="card-content">
+                   {% for photo in event.photo_set.all %}
+            <img class="responsive-img card-panel" src="{{photo.url}}">
+            {% empty %}
+            <div class="card-panel teal-text center-align">No Photos Uploaded</div>
+            {% endfor %}
                     <span class="card-title">{{ event.title }}</span>
                     <p>Date: {{ event.date }}</p>
                     <p>Time: {{ event.time }}</p>

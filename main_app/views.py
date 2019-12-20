@@ -4,9 +4,11 @@ from django.views.generic import ListView, DetailView
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .forms import PostForm
-from .models import Event
+from .models import Event, Photo
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+import uuid
+import boto3
 
 # Create your views here.
 
@@ -37,9 +39,15 @@ def events_detail(request, event_id):
     post_form = PostForm()
     return render(request, 'events/detail.html', {
         # Pass the cat and feeding_form as context
-        'event': event
+        'event': event,
     })
 
+def upload_photo(request, event_id):
+    event = Event.objects.get(id=event_id)
+    return render(request, 'main_app/event_upload_photo.html', {
+        # Pass the cat and feeding_form as context
+        'event': event
+    })
 
 def landing(request):
     return render(request, 'index.html', {'arr': ['Outdoors', 'Entertainment', 'Food', 'Tech', 'Education', 'Health']})
@@ -50,7 +58,7 @@ def user(request):
 
 
 def events(request):
-    return render(request, 'events/index.html')
+    return render(request, 'events/index.html', )
 
 
 def signup(request):
@@ -68,6 +76,7 @@ def signup(request):
     return render(request, 'registration/signup.html', context)
 
 
+
 class EventUpdate(UpdateView):
   model = Event
   fields = ['title', 'date', 'time', 'location', 'description', 'attendees', 'infolink', 'category']
@@ -75,3 +84,25 @@ class EventUpdate(UpdateView):
 class EventDelete(DeleteView):
   model = Event
   success_url = '/events/'
+
+def add_photo(request, event_id):
+    event = Event.objects.get(id=event_id)
+    S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
+    BUCKET = 'dog-sitter'
+    # photo-file will be the "name" attribute on the <input type="file">
+    photo_file = request.FILES.get('photo-file', None)
+    if photo_file:
+        s3 = boto3.client('s3')
+        # need a unique "key" for S3 / needs image file extension too
+        key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+        # just in case something goes wrong
+        try:
+            s3.upload_fileobj(photo_file, BUCKET, key)
+            # build the full url string
+            url = f"{S3_BASE_URL}{BUCKET}/{key}"
+            # we can assign to cat_id or cat (if you have a cat object)
+            photo = Photo(url=url, event_id=event_id)
+            photo.save()
+        except:
+            print('An error occurred uploading file to S3')
+    return redirect('events_detail', event_id=event_id)
