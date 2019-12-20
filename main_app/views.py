@@ -51,7 +51,8 @@ def landing(request):
 
 
 def user(request):
-    return render(request, 'user/profile.html')
+    
+    return render(request, 'user/profile.html', {'contact_name': request.user.first_name})
 
 
 def events(request):
