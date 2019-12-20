@@ -6,23 +6,24 @@
 
 <form action='' method='post'>
 
-    {%csrf_token%}
+  {%csrf_token%}
 
-    <table>
-        {{form.as_table}}
-    </table>
-    <input type="submit" value="Add Event" />
+  <table>
+    {{form.as_table}}
+  </table>
+  <input type="submit" value="Add Event" />
 </form>
 
+
 <script>
-    var dateEl = document.getElementById('id_date');
-    M.Datepicker.init(dateEl, {
-      format: 'yyyy-mm-dd',
-      defaultDate: new Date(),
-      setDefaultDate: true,
-      autoClose: true
-    });
-    var selectEl = document.getElementById('id_category');
-    M.FormSelect.init(selectEl);
-  </script>
+  var dateEl = document.getElementById('id_date');
+  M.Datepicker.init(dateEl, {
+    format: 'yyyy-mm-dd',
+    defaultDate: new Date(),
+    setDefaultDate: true,
+    autoClose: true
+  });
+  var selectEl = document.getElementById('id_category');
+  M.FormSelect.init(selectEl);
+</script>
 {% endblock %}
