@@ -72,6 +72,16 @@ def signup(request):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
 
+
+
+class EventUpdate(UpdateView):
+  model = Event
+  fields = ['title', 'date', 'time', 'location', 'description', 'attendees', 'infolink', 'category']
+
+class EventDelete(DeleteView):
+  model = Event
+  success_url = '/events/'
+
 def add_photo(request, event_id):
     event = Event.objects.get(id=event_id)
     S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'

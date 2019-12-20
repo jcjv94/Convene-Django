@@ -29,12 +29,14 @@ class Event(models.Model):
     description = models.TextField(max_length=2000)
     attendees = ArrayField(models.CharField(max_length=250))
     infolink = models.CharField(max_length=1000)
-    # user = models.ForeignKey(User, on_delete=models.CASCADE)
+
     category = models.CharField(
         max_length=100,
         choices=CATEGORIES,
-        default=''
+        default=""
     )
+    # user = models.ForeignKey(User, on_delete=models.CASCADE)
+
 
     def get_absolute_url(self):
         return reverse('upload_photo', kwargs={'event_id': self.id})
