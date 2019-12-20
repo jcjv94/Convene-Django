@@ -150,5 +150,5 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
 
 LOGIN_URL = '/auth/login/google-oauth2/'
 
-LOGIN_REDIRECT_URL = '/events'
+LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
