@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Events</h1>
-
+{% if category %}
+    <h1>{{category}} Events</h1>
+{% else%}
+    <h1>All Events</h1>
+{% endif %}
 {% for event in events %}
 <a href="{% url 'events_detail' event.id %}">
     <div class="card">
