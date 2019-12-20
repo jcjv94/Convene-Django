@@ -13,6 +13,8 @@ def logout_view(request):
 urlpatterns = [
     path('', views.landing, name='landing'),
     path('events/', views.events_index, name='index'),
+    # path('events/<str:event_category>', views.category_index, name='category_index'),
+    path('events/<str:event_category>', views.category_index, name='category_index'),
     path('events/<int:event_id>/', views.events_detail, name='events_detail'),
     path('events/create/', views.EventCreate.as_view(), name='events_create'),
     path('events/<int:pk>/update/', views.EventUpdate.as_view(), name='events_update'),
