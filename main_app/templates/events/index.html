@@ -8,9 +8,13 @@
     <div class="col s6">
         <div class="card horizontal hoverable">
             <div class="card-image">
-                <img src="https://lorempixel.com/100/190/nature/6"">
-      </div>
-      <div class=" card-stacked">
+                {% for photo in event.photo_set.all %}
+                <img src="{{photo.url}}" , , style="height: 100px; width:100px;">
+                {% empty %}
+                <div class="card-panel teal-text center-align">No Photos Uploaded</div>
+                {% endfor %}
+            </div>
+            <div class=" card-stacked">
                 <div class="card-content">
                     <p>Date: {{ event.date }}</p>
                     <p>Time: {{ event.time }}</p>
@@ -20,7 +24,11 @@
             <p>InfoLink: {{ event.info }}</p> -->
                     <!-- <hr> -->
                     <div class="card-action">
+
+                        <a class="btn waves-effect waves-light blue right" href="{% url 'events_detail' event.id %}"><i
+
                         <a class="btn waves-effect waves-green blue right" href="{% url 'events_detail' event.id %}"><i
+
                                 class="material-icons center-align">visibility</i></a>
                     </div>
                 </div>
