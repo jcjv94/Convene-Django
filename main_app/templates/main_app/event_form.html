@@ -2,27 +2,38 @@
 
 {% block content%}
 
-<h1>Add Event</h1>
+<h3 class="center-align">Add Event</h3>
 
+<div class=" container row">
 <form action='' method='post'>
 
-    {%csrf_token%}
+  {%csrf_token%}
 
-    <table>
-        {{form.as_table}}
-    </table>
-    <input type="submit" value="Add Event" />
+  <table>
+    {{form.as_table}}
+  </table>
+  <input type="submit" value="Add Event" />
 </form>
+</div>
 
 <script>
-    var dateEl = document.getElementById('id_date');
-    M.Datepicker.init(dateEl, {
-      format: 'yyyy-mm-dd',
-      defaultDate: new Date(),
-      setDefaultDate: true,
-      autoClose: true
-    });
-    var selectEl = document.getElementById('id_category');
-    M.FormSelect.init(selectEl);
-  </script>
+  var dateEl = document.getElementById('id_date');
+  M.Datepicker.init(dateEl, {
+    format: 'yyyy-mm-dd',
+    defaultDate: new Date(),
+    setDefaultDate: true,
+    autoClose: true
+  });
+
+  var timeEl = document.getElementById('id_time');
+  M.Timepicker.init(timeEl, {
+    format: "HH:ii:SS",
+    default: 'now',
+    setDefaultDate: true,
+    autoClose: true
+  });
+
+  var selectEl = document.getElementById('id_category');
+  M.FormSelect.init(selectEl);
+</script>
 {% endblock %}

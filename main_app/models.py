@@ -26,15 +26,12 @@ class Event(models.Model):
     description = models.TextField(max_length=2000)
     attendees = ArrayField(models.CharField(max_length=250))
     infolink = models.CharField(max_length=1000)
-<<<<<<< HEAD
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    # user = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.CharField(
         max_length=100,
         choices=CATEGORIES,
+        default=''
     )
-=======
-    # user = models.ForeignKey(User, on_delete=models.CASCADE)
->>>>>>> e65c4c65bdea7279128db3ba251af4550a15a818
 
     def get_absolute_url(self):
         return reverse('events_detail', kwargs={'event_id': self.id})
