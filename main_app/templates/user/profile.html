@@ -91,4 +91,23 @@
 
   </div> -->
 
+
+<h3>Session Started at: {{ user.last_login }}</h3>
+
+{% for event in events %}
+<div class=" card-stacked">
+    <div class="card-content">
+        <p>Title: {{ event.title }}</p>
+        <p>Date: {{ event.date }}</p>
+        <p>Time: {{ event.time }}</p>
+        <p>Location: {{ event.location }}</p>
+        <p class="truncate">Description: {{ event.description }}</p>
+        <div class="card-action">
+            <a class="btn waves-effect waves-green blue right" href="{% url 'events_detail' event.id %}"><i
+                    class="material-icons center-align">visibility</i></a>
+        </div>
+    </div>
+</div>
+{%endfor%}
+
 {% endblock %}

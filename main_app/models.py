@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.postgres.fields import ArrayField
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 # Create your models here.
 
@@ -19,8 +20,6 @@ CATEGORIES = (
 )
 
 
-
-
 class Event(models.Model):
     title = models.CharField(max_length=250)
     date = models.DateField('event date')
@@ -34,10 +33,14 @@ class Event(models.Model):
         choices=CATEGORIES,
         default=""
     )
+
+    users = models.ManyToManyField(User)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
 
     def get_absolute_url(self):
         return reverse('upload_photo', kwargs={'event_id': self.id})
+
 
 class Photo(models.Model):
     url = models.CharField(max_length=200)
@@ -51,3 +54,9 @@ class Comment(models.Model):
     content = models.TextField(max_length=2000)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
+
+class Comment(models.Model):
+    event = models.ForeignKey(Event, related_name='comments', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, unique=False, on_delete=models.CASCADE)
+    text = models.CharField(max_length=250)
+    created_date = models.DateTimeField(default=timezone.now)
