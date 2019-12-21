@@ -4,7 +4,7 @@ from django.views.generic import ListView, DetailView
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .forms import PostForm
-from .models import Event, Photo
+from .models import Event, Photo, User
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 import uuid
@@ -17,9 +17,9 @@ class EventCreate(CreateView):
     model = Event
     fields = ['title', 'date', 'time', 'location',
             'attendees', 'infolink', 'category', 'description']
-
+    
     def form_valid(self, form):
-        # form.instance.user = self.request.user
+        form.instance.user = self.request.user
         return super().form_valid(form)
 
 
@@ -29,6 +29,9 @@ def events_index(request):
     events = Event.objects.all()
     return render(request, 'events/index.html', {'events': events})
 
+def category_index(request, event_category):
+    events = Event.objects.filter(category=event_category)
+    return render(request, 'events/index.html', {'events': events, 'category': event_category})
 
 def events_detail(request, event_id):
     event = Event.objects.get(id=event_id)
@@ -51,8 +54,7 @@ def landing(request):
 
 
 def user(request):
-
-    return render(request, 'user/profile.html')
+    return render(request, 'user/profile.html', {'contact_name': request.user.first_name})
 
 
 def events(request):

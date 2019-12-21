@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h2 class="center-align">Events</h2>
+{% if category %}
+<h1 class="center-align">{{category}} Events</h1>
+{% else%}
+<h1 class="center-align">All Events</h1>
+{% endif %}
 
 {% for event in events %}
 <div class="row">
@@ -20,43 +24,13 @@
                     <p>Time: {{ event.time }}</p>
                     <p>Location: {{ event.location }}</p>
                     <p class="truncate">Description: {{ event.description }}</p>
-                    <!-- <p>Attendees: {{ event.attendees }}</p>
-            <p>InfoLink: {{ event.info }}</p> -->
-                    <!-- <hr> -->
                     <div class="card-action">
                         <a class="btn waves-effect waves-green blue right" href="{% url 'events_detail' event.id %}"><i
                                 class="material-icons center-align">visibility</i></a>
                     </div>
                 </div>
-                <!-- <div class="card-action">
-            <a onclick="M.toast({html: 'Saved your spot! })" class="btn">RSVP</a>
-
-        </div> -->
             </div>
         </div>
     </div>
-
-    <!-- <a href="{% url 'events_detail' event.id %}">
-    <div>
-    <div class="card">
-        <div class="card-content">
-
-
-            <span class="card-title">{{ event.title }}</span>
-            {% for photo in event.photo_set.all %}
-            <img src="{{photo.url}}" , style="height: 100px; width:100px;">
-            {% empty %}
-            <div class="card-panel teal-text center-align">No Photos Uploaded</div>
-            {% endfor %}
-            <p>Date: {{ event.date }}</p>
-            <p>Time: {{ event.time }}</p>
-            <p>Location: {{ event.location }}</p>
-            <p class="truncate">Description: {{ event.description }}</p>
-            <p>Attendees: {{ event.attendees }}</p>
-            <p>InfoLink: {{ event.info }}</p>
-        </div>
-    </div>
-</div> -->
     {% endfor %}
-
     {% endblock %}
