@@ -8,7 +8,11 @@
     <div class="col s6">
         <div class="card horizontal hoverable">
             <div class="card-image">
-                <img src="https://lorempixel.com/100/190/nature/6"">
+                {% for photo in event.photo_set.all %}
+                <img src="{{photo.url}}" , , style="height: 200px;">
+                {% empty %}
+                <div class="card-panel teal-text center-align">No Photos Uploaded</div>
+                {% endfor %}
       </div>
       <div class=" card-stacked">
                 <div class="card-content">

@@ -51,6 +51,7 @@ def landing(request):
 
 
 def user(request):
+
     return render(request, 'user/profile.html')
 
 

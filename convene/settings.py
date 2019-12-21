@@ -152,3 +152,4 @@ LOGIN_URL = '/auth/login/google-oauth2/'
 
 LOGIN_REDIRECT_URL = '/events'
 LOGOUT_REDIRECT_URL = '/'
+
