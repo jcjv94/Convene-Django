@@ -17,9 +17,9 @@ class EventCreate(CreateView):
     model = Event
     fields = ['title', 'date', 'time', 'location',
             'attendees', 'infolink', 'category', 'description']
-
+    
     def form_valid(self, form):
-        # form.instance.user = self.request.user
+        form.instance.user = self.request.user
         return super().form_valid(form)
 
 
@@ -75,6 +75,7 @@ def landing(request):
 
 
 def user(request):
+
     events = Event.objects.all()
     return render(request, 'user/profile.html', {'contact_name': request.user.first_name, 'events': events})
 

@@ -1,0 +1,49 @@
+/* .card-panel {
+    border-radius: 11px;
+} */
+/* img{
+    width: 100px;
+    height: 100px;
+} */
+
+h1{
+    color: red;
+}
+
+#profile{
+
+}
+
+#profhead{
+   font-weight: 500;
+}
+
+li{
+    padding-left: 18%;
+    text-align: right;
+}
+
+
+.l1{
+    border-left: solid 4px black;
+    height: 500px;
+    position: absolute;
+    left: 50%;
+  margin-left: -90px;
+  top: 0;
+}
+
+.container{
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.img-container {
+    width: 100px;
+    height: 100px;
+}
+
+#midline {
+
+}
