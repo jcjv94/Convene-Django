@@ -13,12 +13,12 @@
         <div class="card horizontal hoverable">
             <div class="card-image">
                 {% for photo in event.photo_set.all %}
-                <img src="{{photo.url}}" , , style="height: 100px; width:100px;">
+                <img src="{{photo.url}}" , , style="height: 200px;">
                 {% empty %}
                 <div class="card-panel teal-text center-align">No Photos Uploaded</div>
                 {% endfor %}
-            </div>
-            <div class=" card-stacked">
+      </div>
+      <div class=" card-stacked">
                 <div class="card-content">
                     <p>Date: {{ event.date }}</p>
                     <p>Time: {{ event.time }}</p>

@@ -1,14 +1,94 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>This is a users profile page</h1>
-<h3>Username: {{ user.username }}</h3>
 
-<h3>User Full name: {{ user.get_full_name }}</h3>
+<div class="row">
+    <div id=""class="col s12">
+        <ul id="profhead">
+            <li class="col s2"> Full name: {{ user.get_full_name }} </li>
+            <li class="col s2"> @{{ user.username }} </li>
+            <li class="col s2"> Id: {{ user.id }} </li>
+            <li class="col s2"> Email: {{ user.email }}</li>
+            <li class="col s2"> Group: {{ user.groups.all.0 }}</li>
+        </ul>
+    </div>
+    <div>
+        <br><br><br>
+        <hr>
 
-<h3>User Group: {{ user.groups.all.0 }}</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th class="center-align">Attending</th>
+                    <th class="center-align">Created</th>
+                </tr>
+            </thead>
 
-<h3>Email: {{ user.email }}</h3>
-<h3>Id: {{ user.id }}</h3>
+            <tbody>
+                <tr>
+                    <td class="center-align">{{ event.title }}</td>
+                    <td class="center-align">{{ event.title }}</td>
+                </tr>
+                <tr>
+                    <td class="center-align">{{ event.title }}</td>
+                    <td class="center-align">{{ event.title }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
-<h3>Session Started at: {{ user.last_login }}</h3>
+
+
+<!-- 
+<div class="row">
+
+    <div id="profile" class="right-align col 12">
+        <div>
+        <header>
+            <div class="avatarcontainer">
+                <img src="http://www.croop.cl/UI/twitter/images/carl.jpg" alt="avatar" class="avatar">
+                <div class="hover">
+                    <div class="icon-twitter"></div>
+                </div>
+            </div>
+            <div class="bio">
+                <div class="desc">
+                    <h6>@{{ user.username }}</h6>
+                    <h6>Id: {{ user.id }}</h6>
+                </div>
+            </div>
+        </header>
+        <div class="content">
+            <div class="data">
+                <ul>
+                    <li>
+                        <span>Full name: {{ user.get_full_name }}</span>
+                    </li>
+                    <li>
+                        <span>Email: {{ user.email }}</span>
+                    </li>
+                    <li>
+                        <span>Group: {{ user.groups.all.0 }}</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="follow">
+                <div></div> Follow
+            </div>
+        </div>
+
+    </div>
+</div>
+
+    <div class="col s6">
+     <h3>Events</h3>
+    </div>
+    <div class="col s6">
+        <h3> Created</h3>
+    </div>
+
+
+  </div> -->
+
 {% endblock %}
