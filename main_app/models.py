@@ -35,7 +35,7 @@ class Event(models.Model):
     )
 
     users = models.ManyToManyField(User)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    # user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
     def get_absolute_url(self):

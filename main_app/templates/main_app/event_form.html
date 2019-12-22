@@ -3,7 +3,59 @@
 {% block content%}
 
 <div class="container row">
-  <form action='' method='post'>
+
+  <div class="container row">
+    <form action="" method="post">{% csrf_token %}
+
+
+      {{ form.non_field_errors }}
+  <div class="fieldWrapper">
+      {{ form.event_title.errors }}
+      <label for="{{ form.title.id_title }}">Title:</label>
+      {{ form.event_title }}
+      <input type="text" placeholder="Title">
+  </div>
+
+  <div class="fieldWrapper">
+      {{ form.event_date.errors }}
+      <label for="{{ form.date.id_date }}">Date:</label>
+      {{ form.event_date }}
+      <input class="datepicker" type="text" name="" id="" placeholder="Choose a Date">
+  </div>
+
+  <div class="fieldWrapper">
+      {{ form.event_time.errors }}
+      <label for="{{ form.time.id_time }}">Time:</label>
+      {{ form.event_time }}
+      <input class="timepicker" type="text" name="" id="" placeholder="Choose a Time">
+  </div>
+
+  <div class="fieldWrapper">
+      {{ form.event_location.errors }}
+      <label for="{{ form.location.id_location }}">Location</label>
+      {{ form.event_location }}
+      <input type="text" name="" id="" placeholder="Location">
+  </div>
+
+  <div class="fieldWrapper">
+      {{ form.event_infolink.errors }}
+      <label for="{{ form.infolink.id_infolink }}">Infolink</label>
+      {{ form.event_infolink }}
+      <input type="text" name="" id=""" placeholder="Add a link">
+  </div>
+
+  <div class="fieldWrapper">
+      {{ form.event_category.errors }}
+      <label for="{{ form.category.id_category }}">Category</label>
+      {{ form.event_category }}
+      <input type="text" name="" id="" placeholder="Choose a Category">
+  </div>
+  <button type="submit" value="Add Event" class="waves-effect waves-green btn hoverable">Add Event<i
+    class="material-icons right">event</i></button>
+  </form>
+  </div>
+
+  <!-- <form action='' method='post'>
 
     {%csrf_token%}
 
@@ -23,7 +75,7 @@
         <button type="submit" value="Add Event" class="waves-effect waves-green btn hoverable">Add Event<i
             class="material-icons right">event</i></button>
       </div>
-    </form>
+    </form> -->
 </div>
 
 <script>
